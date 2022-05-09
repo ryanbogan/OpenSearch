@@ -8,6 +8,8 @@
 
 package org.opensearch.extensions;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.ParameterizedMessage;
@@ -119,6 +121,7 @@ public class ExtensionsOrchestrator implements ReportingService<PluginsAndModule
     }
 
     public void extensionsInitialize() {
+        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 
         final TransportResponseHandler<PluginResponse> pluginResponseHandler = new TransportResponseHandler<PluginResponse>() {
 
